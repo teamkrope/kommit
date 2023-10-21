@@ -1,28 +1,44 @@
-import os
+import requests
 import random
-import subprocess
 import time
 
-# Specify the file name where you want to add the random code
-file_name = "random_key.c"
+# Replace with your GitHub access token and repository information
+access_token = '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'
+username = 'huzaifaasim017'
+repository = 'test'
+branch = 'master'
 
-# Function to create and add a random code to the file
-def create_and_commit_random_code():
-    # Generate a random code
-    random_code = ''.join(random.choice('0123456789ABCDEF') for _ in range(8))
+def create_random_commit():
+    # Generate a random key for the commit message
+    random_key = ''.join(random.choice('0123456789ABCDEF') for _ in range(8))
 
-    # Write the random code to the file
-    with open(file_name, "a") as file:
-        file.write(f"Random Code: {random_code}\n")
+    # Get the current SHA of the file
+    headers = {
+        'Authorization': f'token {access_token}'
+    }
+    file_url = f'https://api.github.com/repos/{username}/{repository}/contents/random_key.txt'
+    response = requests.get(file_url, headers=headers)
+    current_file_info = response.json()
+    current_sha = current_file_info['sha']
 
-    # Use Git commands to stage and commit the changes
-    subprocess.run(["git", "add", "."])
-    subprocess.run(["git", "commit", "-a", "-m", f"Added random code: {random_code}"])
+    # Create a new commit
+    commit_message = f"Commit with random key: {random_key}"
+    data = {
+        'message': commit_message,
+        'content': random_key,
+        'branch': branch,
+        'sha': current_sha  # Provide the current SHA
+    }
 
-# Number of commits to create
-num_commits = 10  # You can change this to the desired number
+    response = requests.put(file_url, headers=headers, json=data)
+    print(f"Response status code: {response.status_code}")
+    print(f"Response content: {response.text}")
 
-# Create and commit random code in a loop
-for _ in range(num_commits):
-    create_and_commit_random_code()
-    time.sleep(10)  # Sleep for 60 seconds before the next commit
+    if response.status_code == 200:
+        print(f"Commit with random key {random_key} created successfully.")
+    else:
+        print(f"Failed to create commit: {response.status_code} - {response.text}")
+
+while True:
+    create_random_commit()
+    time.sleep(50)  # Sleep for 5 seconds before the next commit
