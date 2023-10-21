@@ -4,7 +4,7 @@ import subprocess
 import time
 
 # Specify the file name where you want to add the random code
-file_name = "random_key.c"
+file_name = "random_key.go"
 
 # Function to create and add a random code to the file
 def create_and_commit_random_code():
