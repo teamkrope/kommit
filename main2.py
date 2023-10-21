@@ -20,9 +20,9 @@ def create_and_commit_random_code():
     subprocess.run(["git", "commit", "-a", "-m", f"Added random code: {random_code}"])
 
 # Number of commits to create
-num_commits = 10  # You can change this to the desired number
+num_commits = 100  # You can change this to the desired number
 
 # Create and commit random code in a loop
 for _ in range(num_commits):
     create_and_commit_random_code()
-    time.sleep(10)  # Sleep for 60 seconds before the next commit
+    time.sleep(3)  # Sleep for 60 seconds before the next commit
