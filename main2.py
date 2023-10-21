@@ -25,4 +25,4 @@ num_commits = 100  # You can change this to the desired number
 # Create and commit random code in a loop
 for _ in range(num_commits):
     create_and_commit_random_code()
-    time.sleep(1)  # Sleep for 60 seconds before the next commit
+    # time.sleep(1)  # Sleep for 60 seconds before the next commit
