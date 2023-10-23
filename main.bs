@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Specify the file name where you want to add the random code
+file_name="random_key.go"
+
+# Number of commits to create
+num_commits=1000  # You can adjust this to the desired number
+
+# Initialize the Git repository
+git init
+
+# Create and commit random code
+for ((i = 1; i <= num_commits; i++)); do
+  # Generate a random code
+  random_code=$(cat /dev/urandom | tr -dc '0-9A-F' | fold -w 8 | head -n 1)
+
+  # Write the random code to the file
+  echo "Random Code: $random_code" >> "$file_name"
+
+  # Use Git commands to stage and commit the changes
+  git add "$file_name"
+  git commit -m "Added random code: $random_code"
+done
