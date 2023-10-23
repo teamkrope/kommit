@@ -4,15 +4,13 @@ import subprocess
 import time
 
 # Specify the file name where you want to add the random code
-file_name = "random_key.cs"
+file_name = "random_key.go"
 
-# Specify your repository and branch information
-repository = "test"
-branch = "master"
-new_branch = "develop_v1"  # Change this to the name of the new branch
+# Initialize the Git repository
+# subprocess.run(["git", "init"])
 
-# Function to create and commit random code to a specific branch
-def create_commit_and_pull_request():
+# Function to create and add a random code to the file and commit
+def create_and_commit_random_code():
     # Generate a random code
     random_code = ''.join(random.choice('0123456789ABCDEF') for _ in range(8))
 
@@ -20,22 +18,17 @@ def create_commit_and_pull_request():
     with open(file_name, "a") as file:
         file.write(f"Random Code: {random_code}\n")
 
-    # Use Git commands to stage and commit the changes to the new branch
-    subprocess.run(["git", "checkout", "-b", new_branch])  # Create and switch to the new branch
-    subprocess.run(["git", "add", "."])
-    subprocess.run(["git", "commit", "-a", "-m", f"Added random code: {random_code}"])
+    # Use Git commands to stage and commit the changes
+    subprocess.run(["git", "add", "."], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.run(["git", "commit", "-m", f"Added random code: {random_code}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    # Push the new branch to the repository
-    subprocess.run(["git", "push", "origin", new_branch])
+# Number of commits to create
+num_commits = 10000  # You can change this to the desired number
 
-    # Create a pull request from the new branch to the original branch
-    subprocess.run(["hub", "pull-request", "-b", f"{repository}:{branch}", "-h", f"{repository}:{new_branch}"])
+# Create and commit random code in a loop
+start_time = time.time()
+for _ in range(num_commits):
+    create_and_commit_random_code()
+end_time = time.time()
 
-# Number of pull requests to create
-num_pull_requests = 10  # You can change this to the desired number
-
-# Create commits, branches, and pull requests in a loop
-for _ in range(num_pull_requests):
-    create_commit_and_pull_request()
-    # Sleep for a few seconds to allow the pull request to be created
-    time.sleep(10)
+print(f"Total time taken for {num_commits} commits: {end_time - start_time} seconds")
