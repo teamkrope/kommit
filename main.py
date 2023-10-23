@@ -21,7 +21,7 @@ def create_and_commit_random_code(_):
     subprocess.run(["git", "commit", "-m", f"Added random code: {random_code}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 # Number of commits to create
-num_commits = 10
+num_commits = 100
 
 # Create and commit random code in parallel
 if __name__ == '__main__':
