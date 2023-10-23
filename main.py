@@ -13,7 +13,7 @@ def create_random_code():
         file.write(f"Random Code: {random_code}\n")
 
 # Number of commits to create
-num_commits = 10  # You can change this to the desired number
+num_commits = 50  # You can change this to the desired number
 
 # Initialize the Git repository
 # subprocess.run(["git", "init"])
