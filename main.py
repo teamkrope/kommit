@@ -15,23 +15,14 @@ def create_random_code():
 # Number of commits to create
 num_commits = 10  # You can change this to the desired number
 
-# Initialize the Git repository
-# subprocess.run(["git", "init"])
-
-# Commit every 10 changes
-commit_interval = 10
-
+# Create random codes
 start_time = time.time()
 for i in range(num_commits):
     create_random_code()
-    if (i + 1) % commit_interval == 0:
-        subprocess.run(["git", "add", "."], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        subprocess.run(["git", "commit", "-m", f"Added {commit_interval} random codes"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-# Commit any remaining changes
+# Use Git commands to stage and commit all changes at once
 subprocess.run(["git", "add", "."], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-subprocess.run(["git", "commit", "-m", f"Added {num_commits % commit_interval} random codes"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
+subprocess.run(["git", "commit", "-m", f"Added {num_commits} random codes"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 end_time = time.time()
 
 # Print the time taken
