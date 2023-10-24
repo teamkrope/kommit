@@ -66,7 +66,7 @@ def create_and_commit_random_code(commit_number, total_commits):
     print(f"Progress: {percentage:.2f}% complete", end='\r')
 
 # Number of commits to create
-num_commits = 10  # You can change this to the desired number
+num_commits = 100000  # You can change this to the desired number
 
 # Initialize the Git repository
 subprocess.run(["git", "init"])
