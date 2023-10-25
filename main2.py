@@ -20,7 +20,7 @@ def create_and_commit_random_code():
     subprocess.run(["git", "commit", "-a", "-m", f"Added random code: {random_code}"])
 
 # Number of commits to create
-num_commits = 10  # You can change this to the desired number
+num_commits = 50000  # You can change this to the desired number
 
 # Create and commit random code in a loop
 for _ in range(num_commits):
