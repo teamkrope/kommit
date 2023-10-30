@@ -1,7 +1,6 @@
-import os
 import random
-import subprocess
 import time
+import git
 
 file_name = "random_key_v3.r"
 
@@ -12,12 +11,13 @@ def create_and_commit_random_code(commit_number, total_commits):
     with open(file_name, "a") as file:
         file.write(f"Random Code: {random_code}\n")
 
-    subprocess.run(["git", "add", "."], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    subprocess.run(["git", "commit", "-m", f"Added random code: {random_code}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    repo = git.Repo(search_parent_directories=True)
+    repo.index.add([file_name])
+    repo.index.commit(f"Added random code: {random_code}")
 
     percentage = (commit_number / total_commits) * 100
     print(f"Progress: {percentage:.2f}% complete", end='\r')
-    
+
 num_commits = 100
 start_time = time.time()
 
