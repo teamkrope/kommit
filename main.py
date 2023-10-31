@@ -17,7 +17,7 @@ with open(file_name, "w") as file:
     file.write("")
 
 # Define the total number of commits to make
-total_commits = 100
+total_commits = 100000
 
 # Make 10,000 commits with minimal changes
 for i in range(total_commits):
@@ -31,4 +31,4 @@ for i in range(total_commits):
     percentage = (i + 1) / total_commits * 100
     print(f"Progress: {percentage:.2f}% complete", end='\r')
 
-print("Created 10,000 commits.")
+print(f"Created {total_commits} commits.")
