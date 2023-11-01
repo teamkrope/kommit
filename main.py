@@ -1,7 +1,7 @@
 import git
 import os
 
-file_name = "random_key_v3.r"
+file_name = "random_key.py"
 
 # Create a repository if it doesn't exist
 if not os.path.exists(".git"):
@@ -17,7 +17,7 @@ with open(file_name, "w") as file:
     file.write("")
 
 # Define the total number of commits to make
-total_commits = 29920
+total_commits = 50000
 
 # Make 10,000 commits with minimal changes
 for i in range(total_commits):

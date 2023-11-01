@@ -3,7 +3,7 @@ import random
 import subprocess
 import time
 
-file_name = "random_key_v3.r"
+file_name = "random_key.py"
 
 def create_and_commit_random_code(commit_number, total_commits):
     random_code = ''.join(random.choice('0123456789ABCDEF') for _ in range(8))
@@ -18,7 +18,7 @@ def create_and_commit_random_code(commit_number, total_commits):
     percentage = (commit_number / total_commits) * 100
     print(f"Progress: {percentage:.2f}% complete", end='\r')
     
-num_commits = 100
+num_commits = 5000
 start_time = time.time()
 
 for i in range(num_commits):
