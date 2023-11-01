@@ -17,7 +17,7 @@ with open(file_name, "w") as file:
     file.write("")
 
 # Define the total number of commits to make
-total_commits = 30000
+total_commits = 29920
 
 # Make 10,000 commits with minimal changes
 for i in range(total_commits):
