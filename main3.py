@@ -18,7 +18,7 @@ def create_and_commit_random_code(commit_number, total_commits):
     percentage = (commit_number / total_commits) * 100
     print(f"Progress: {percentage:.2f}% complete", end='\r')
     
-num_commits = 75000
+num_commits = 25000
 start_time = time.time()
 
 for i in range(num_commits):
