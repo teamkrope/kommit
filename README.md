@@ -1,5 +1,5 @@
 # The Most Committed Repository on GitHub By Team Krope
-Welcome to the repository that is set to become the most committed repository on GitHub! We, Team Krope, embark on a unique journey to break the record and set a new standard in open-source contributions and programmers. The point is we'll not just create the most committed repository, we'll also maintain its status for the future through continuous progress and contributions.
+Welcome to the repository that is set to become the most committed repository on GitHub! We, Team Krope, embark on a unique journey to break the record and set a new standard in open-source contributions. The point is we'll not just create the most committed repository, we'll also maintain its status for the future through continuous progress and contributions.
 
 
 ## About the Project
